@@ -9,7 +9,7 @@ export default function UserForm() {
       if(localStorage.getItem("teamMessage"))
         setMessage('Već je prijavljen igrač sa ovog uređaja!')
       else if(firstName.trim()!=='' && lastName.trim()!==''){
-        const response = await fetch("http://localhost:5000/add-player", {
+        const response = await fetch("https://tournament-backend-app.onrender.com/add-player", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -26,7 +26,7 @@ export default function UserForm() {
           localStorage.setItem("teamMessage", result.message);    
 
           //if(!localStorage.getItem("serverSessionId")){
-            fetch("http://localhost:5000/session-id")
+            fetch("https://tournament-backend-app.onrender.com")
             .then(res => res.json())
             .then(data => {
               localStorage.setItem("serverSessionId",  data.sessionId);

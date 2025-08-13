@@ -6,7 +6,7 @@ export default function App() {
     const [activeTab, setActiveTab] = useState("teams");
     const [message, setMessage] = useState(" ");
     useEffect(() => {
-      fetch("http://localhost:5000/session-id")
+      fetch("https://tournament-backend-app.onrender.com/session-id")
         .then(res => res.json())
         .then(data => {
           const savedSessionId = localStorage.getItem("serverSessionId");
@@ -21,7 +21,7 @@ export default function App() {
           }
         });
         
-        fetch("http://localhost:5000/teams")
+        fetch("https://tournament-backend-app.onrender.com/teams")
         .then(res => res.json())
         .then(data => {
             setTeams(data.teams);
