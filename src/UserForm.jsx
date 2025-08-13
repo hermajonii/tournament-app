@@ -32,7 +32,7 @@ export default function UserForm() {
               localStorage.setItem("serverSessionId",  data.sessionId);
             })
           //}
-          window.location.href = "/";
+          window.location.href = "/tournament-app/";
         }
       }
       else
