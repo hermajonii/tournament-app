@@ -8,7 +8,7 @@ export default function App() {
       setIsButtonDisabled(true)
     }
 
-    console.log(isButtonDisabled)
+    console.log("isButtonDisabled"+isButtonDisabled)
   })
     return (
         <div className="full-page">        
@@ -31,7 +31,7 @@ export default function App() {
                 <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className={`collapse navbar-collapse ${isButtonDisabled===true ? "d-none" : ""}`} id="navbarNav">
-                <ul className="navbar-nav ms-auto">
+                <ul className={`navbar-nav ms-auto  ${isButtonDisabled===true ? "d-none" : ""}`}>
                     <li className={`nav-item ${isButtonDisabled===true ? "d-none" : ""}" `}>
                         <PopupQuestion/>
                     </li>
