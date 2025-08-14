@@ -8,12 +8,11 @@ export default function App() {
       setIsButtonDisabled(true)
     }
 
-    console.log("isButtonDisabled"+isButtonDisabled)
   })
     return (
         <div className="full-page">        
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3 ">
-                <a className="navbar-brand d-flex align-items-center" href="#">
+                <a className="navbar-brand d-flex align-items-center" href="">
                 <img
                     src={ball}
                     alt="Logo"

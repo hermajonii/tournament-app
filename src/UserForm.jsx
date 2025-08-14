@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"
 export default function UserForm() {
   const [firstName, setFirstName] = useState(undefined);
   const [lastName, setLastName] = useState(undefined);
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -30,7 +32,7 @@ export default function UserForm() {
           .then(res => res.json())
           .then(data => {
             localStorage.setItem("serverSessionId",  data.sessionId);
-            window.location.href = "/tournament-app/";
+            navigate("/tournament-app/")
           })
           
         }
