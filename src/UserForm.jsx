@@ -19,20 +19,20 @@ export default function UserForm() {
         const result = await response.json();
         if(result.error)
           setMessage(result.error)
+
         if(response.status===200){
           setFirstName("");
           setLastName("");
           
           localStorage.setItem("teamMessage", result.message);    
 
-          //if(!localStorage.getItem("serverSessionId")){
-            fetch("https://tournament-backend-app.onrender.com")
-            .then(res => res.json())
-            .then(data => {
-              localStorage.setItem("serverSessionId",  data.sessionId);
-            })
-          //}
-          window.location.href = "/tournament-app/";
+          fetch("https://tournament-backend-app.onrender.com/session-id")
+          .then(res => res.json())
+          .then(data => {
+            localStorage.setItem("serverSessionId",  data.sessionId);
+            window.location.href = "/tournament-app/";
+          })
+          
         }
       }
       else
@@ -52,17 +52,17 @@ export default function UserForm() {
         style={{ minWidth: "300px" }}
       >
         <h2 className="mb-4 text-center">Prijava igrača</h2>
-        <div class="form-floating mb-3">
-          <input class="form-control" id="firstName" placeholder="name@example.com" value={firstName}
+        <div className="form-floating mb-3">
+          <input className="form-control" id="firstName" placeholder="name@example.com" value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required/>
-          <label for="firstName"  className="text-success">Ime</label>
+          <label htmlFor="firstName"  className="text-success">Ime</label>
         </div>
-        <div class="form-floating mb-3">
-          <input class="form-control" id="lastName" placeholder="name@example.com" value={lastName}
+        <div className="form-floating mb-3">
+          <input className="form-control" id="lastName" placeholder="name@example.com" value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required/>
-          <label for="lastName"  className="text-success">Prezime</label>
+          <label htmlFor="lastName"  className="text-success">Prezime</label>
         </div>
         <p className="text-danger">{message}</p>
         <button type="submit" className="mt-3 btn btn-success w-100 text-dark fw-bold">

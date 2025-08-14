@@ -12,6 +12,8 @@ export default function App() {
           const savedSessionId = localStorage.getItem("serverSessionId");
           let mess = localStorage.getItem("teamMessage")
           console.log(mess)
+          console.log(savedSessionId)
+          console.log(data.sessionId)
           if (savedSessionId === data.sessionId) {
             let mess = localStorage.getItem("teamMessage")
             setMessage(mess);
