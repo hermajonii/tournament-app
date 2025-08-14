@@ -6,43 +6,44 @@ export default function App() {
     const [activeTab, setActiveTab] = useState("teams");
     const [message, setMessage] = useState(" ");
     useEffect(() => {
+      const fetchResults = async () => {
+        try {
+          const res = await fetch("https://tournament-backend-app.onrender.com/results");
+          const data = await res.json();
+          setCourts(data.results);
+        } catch (err) {
+          console.error("Greška prilikom učitavanja rezultata:", err);
+        }
+      };
+      fetchResults()
+      
       fetch("https://tournament-backend-app.onrender.com/session-id")
-        .then(res => res.json())
-        .then(data => {
-          const savedSessionId = localStorage.getItem("serverSessionId");
+      .then(res => res.json())
+      .then(data => {
+        const savedSessionId = localStorage.getItem("serverSessionId");
 
-          if (savedSessionId === data.sessionId) {
-            let mess = localStorage.getItem("teamMessage")
-            setMessage(mess);
-          }
-          else {
-            localStorage.removeItem("teamMessage");            
-          }
-        });
+        if (savedSessionId === data.sessionId) {
+          let mess = localStorage.getItem("teamMessage")
+          setMessage(mess);
+        }
+        else {
+          localStorage.removeItem("teamMessage");            
+        }
+      });
         
         
-        fetch("https://tournament-backend-app.onrender.com/teams")
-        .then(res => res.json())
-        .then(data => {
-            setTeams(data.teams);
-            setCourts(data.results);
-        })
-        .catch(err => console.error(err));
+      fetch("https://tournament-backend-app.onrender.com/teams")
+      .then(res => res.json())
+      .then(data => {
+          setTeams(data.teams);
+          setCourts(data.results);
+      })
+      .catch(err => console.error(err));
 
 
-        const fetchResults = async () => {
-          try {
-            const res = await fetch("https://tournament-backend-app.onrender.com/results");
-            const data = await res.json();
-            setCourts(data.results);
-          } catch (err) {
-            console.error("Greška prilikom učitavanja rezultata:", err);
-          }
-        };
-    
-        fetchResults()
+        
         // Interval na svakih 15 sekundi
-        const intervalId = setInterval(fetchResults, 15000);
+        const intervalId = setInterval(fetchResults, 5000);
     
         // Čišćenje intervala kada se komponenta unmountuje
         return () => clearInterval(intervalId);
@@ -62,7 +63,7 @@ export default function App() {
             <li className="nav-item  text-info">
             <button
                 className={`nav-link text-info ${activeTab === "results" ? "active bg-info text-dark" : ""}`}
-                onClick={() => setActiveTab("results")}
+                onClick={() => {setActiveTab("results");fetchResults();}}
             >
                 Rezultati
             </button>
@@ -88,28 +89,28 @@ export default function App() {
             ))
         )}
         {
-            activeTab === "results" && (
-                Object.keys(courts).map(courtNum => (
-                    <div key={courtNum} className="m-5">
-                      <h3 className="my-3 pt-3 text-info ">Teren {parseInt(courtNum)+1}</h3>
-                      <table className="table table-bordered text-center table-striped">
-                        <thead>
-                          <tr>
-                            <th className="bg-dark text-light">Game</th>
-                            <th className="bg-dark text-light">Score</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {courts[courtNum].map((g, idx) => (
-                            <tr key={idx}>
-                              <td className="bg-dark text-light">{g.game}</td>
-                              <td className="bg-dark text-light">{g.result || "–"}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  ))
+            activeTab === "results" && courts && (
+              Object.keys(courts).map(courtNum => (
+                <div key={courtNum} className="m-5">
+                  <h3 className="my-3 pt-3 text-info ">Teren {parseInt(courtNum)+1}</h3>
+                  <table className="table table-bordered text-center table-striped">
+                    <thead>
+                      <tr>
+                        <th className="bg-dark text-light">Game</th>
+                        <th className="bg-dark text-light">Score</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {courts[courtNum].map((g, idx) => (
+                        <tr key={idx}>
+                          <td className="bg-dark text-light">{g.game}</td>
+                          <td className="bg-dark text-light">{g.result || "–"}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ))
             )
         }
     </div>
