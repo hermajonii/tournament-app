@@ -8,13 +8,13 @@ body{
   font-weight: 400;
   font-size: 110%;
   font-style: normal;
-}
-  /* table {
-    font-family: "Shadows Into Light", system-ui;
-    font-weight: 600;
-    font-size: 150%;
-    font-style: normal;
-  } */
+  }
+    /* table {
+      font-family: "Shadows Into Light", system-ui;
+      font-weight: 600;
+      font-size: 150%;
+      font-style: normal;
+    } */
 
 .full-page {
   min-height: 100%;

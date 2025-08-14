@@ -5,7 +5,6 @@ export default function App() {
   const modalRef = useRef(null);
   const modal2Ref = useRef(null);
   const modal3Ref = useRef(null);
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const openModal = () => {
     const modal = new window.bootstrap.Modal(modalRef.current);
     modal.show();
@@ -29,14 +28,9 @@ export default function App() {
     modal.hide();
     openModal2();
   };
-  useEffect(() => {
-    if(localStorage.getItem("teamMessage")) {
-      setIsButtonDisabled(true)
-    }
-  })
 
   return (
-    <div className={`container ${isButtonDisabled === true ? "d-none" : ""}`}>
+    <div className='container'>
       <button className='btn border-0 text-light btn-lg text-decoration-underline' onClick={openModal}>
         Dodeli mi tim
       </button>

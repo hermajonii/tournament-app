@@ -10,10 +10,7 @@ export default function App() {
         .then(res => res.json())
         .then(data => {
           const savedSessionId = localStorage.getItem("serverSessionId");
-          let mess = localStorage.getItem("teamMessage")
-          console.log(mess)
-          console.log(savedSessionId)
-          console.log(data.sessionId)
+
           if (savedSessionId === data.sessionId) {
             let mess = localStorage.getItem("teamMessage")
             setMessage(mess);
@@ -23,6 +20,7 @@ export default function App() {
           }
         });
         
+        
         fetch("https://tournament-backend-app.onrender.com/teams")
         .then(res => res.json())
         .then(data => {
@@ -30,6 +28,24 @@ export default function App() {
             setCourts(data.results);
         })
         .catch(err => console.error(err));
+
+
+        const fetchResults = async () => {
+          try {
+            const res = await fetch("https://tournament-backend-app.onrender.com/results");
+            const data = await res.json();
+            setCourts(data.results);
+          } catch (err) {
+            console.error("Greška prilikom učitavanja rezultata:", err);
+          }
+        };
+    
+        fetchResults()
+        // Interval na svakih 15 sekundi
+        const intervalId = setInterval(fetchResults, 15000);
+    
+        // Čišćenje intervala kada se komponenta unmountuje
+        return () => clearInterval(intervalId);
     }, []);
   return (
      <div className="bg-dark text-light pb-2">
