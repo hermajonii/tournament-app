@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 export default function UserForm() {
+  const navigate = useNavigate();
   const [firstName, setFirstName] = useState(undefined);
   const [lastName, setLastName] = useState(undefined);
   const [message, setMessage] = useState("");
-  const navigate = useNavigate();
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -24,15 +25,17 @@ export default function UserForm() {
 
         if(response.status===200){
           setFirstName("");
+
           setLastName("");
           
           localStorage.setItem("teamMessage", result.message);    
-
+          
           fetch("https://tournament-backend-app.onrender.com/session-id")
           .then(res => res.json())
           .then(data => {
             localStorage.setItem("serverSessionId",  data.sessionId);
-            navigate("/tournament-app/")
+            navigate("/")
+            window.location.reload();
           })
           
         }
