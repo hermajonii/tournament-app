@@ -45,13 +45,13 @@ export default function App() {
         <div className="modal-dialog modal-fullscreen bg-dark">
           <div className="modal-content text-light bg-dark">
             <div className="modal-body d-flex flex-column justify-content-center align-items-center text-center">
-              <h3 className="mb-4 text-info">Da li igrate danas? Dodela tima je samo za one koji igraju danas, budi fer!!!</h3>
+              <h3 className="mb-4 text-info">Dodela tima je samo za one koji igraju danas, budi fer!!!</h3>
               <h5 className="fs-4 mb-5 mt-4">
                 Da li ste baš baš baaaaaaaaš sigurni da danas igrate???
               </h5> 
-              <div>
+              <div class='row justify-content-center align-items-cente'>
                 <button
-                  className="btn btn-outline-success p-4 me-3"
+                  className="btn btn-outline-success p-4 col-5 me-4"
                   type="button"
                   data-bs-dismiss="modal"
                   onClick={handleYesClick}
@@ -59,7 +59,7 @@ export default function App() {
                   Da, sigurno igram danas :)
                 </button>
                 <button
-                  className="btn btn-outline-danger p-4"
+                  className="btn btn-outline-danger p-4 col-5 "
                   data-bs-dismiss="modal"
                   onClick={handleNoClick}
                 >

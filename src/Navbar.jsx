@@ -11,7 +11,7 @@ export default function App() {
   })
     return (
         <div className="full-page">        
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3 ">
+            <nav className="navbar navbar-expand navbar-dark bg-dark px-3 ">
                 <a className="navbar-brand d-flex align-items-center" href="">
                 <img
                     src={ball}
@@ -21,21 +21,12 @@ export default function App() {
                     className="me-2"
                     />
                 </a>
-                <button 
-                className={`navbar-toggler ${isButtonDisabled===true ? "d-none" : ""} `}
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-                >
-                <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className={`collapse navbar-collapse ${isButtonDisabled===true ? "d-none" : ""}`} id="navbarNav">
+                
                 <ul className={`navbar-nav ms-auto  ${isButtonDisabled===true ? "d-none" : ""}`}>
                     <li className={`nav-item ${isButtonDisabled===true ? "d-none" : ""}" `}>
                         <PopupQuestion/>
                     </li>
                 </ul>
-                </div>
             </nav>
         </div>
     );
