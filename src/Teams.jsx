@@ -3,6 +3,7 @@ import { useEffect,useState } from "react";
 export default function App() {
     const [teams, setTeams] = useState([]);
     const [courts, setCourts] = useState([]);
+    const [wins, setWins] = useState([]);
     const [activeTab, setActiveTab] = useState("teams");
     const [message, setMessage] = useState(" ");
     useEffect(() => {
@@ -11,6 +12,7 @@ export default function App() {
           const res = await fetch("https://tournament-backend-app.onrender.com/results");
           const data = await res.json();
           setCourts(data.results);
+          setWins(data.wins);
         } catch (err) {
           console.error("Greška prilikom učitavanja rezultata:", err);
         }
@@ -63,7 +65,7 @@ export default function App() {
             <li className="nav-item  text-info">
             <button
                 className={`nav-link text-info ${activeTab === "results" ? "active bg-info text-dark" : ""}`}
-                onClick={() => {setActiveTab("results");fetchResults();}}
+                onClick={() => {setActiveTab("results");}}
             >
                 Rezultati
             </button>
@@ -88,8 +90,32 @@ export default function App() {
                 </div>
             ))
         )}
+        <div className="m-5 p-3">
+        <h3 className="text-info">Broj pobeda: </h3>
+        <table className="table table-bordered table-stripped">
+          <thead>
+            <tr>
+                <td className="col-6 bg-dark text-light text-center pb-1 align-middle"> Tim</td>
+                <td className="bg-dark text-light text-center pb-1 align-middle">Pobede</td>
+            </tr>   
+          </thead>
+          <tbody>
+          {
+            activeTab === "results" && wins && (
+              wins.map(team => (
+                  <tr key={team.team}>
+                      <td className="col-6 bg-dark text-light text-center pb-1 align-middle"> Tim {team.team} </td>
+                      <td className="bg-dark text-light text-center pb-1 align-middle">{team.wins}</td>
+                  </tr>           
+              ))
+            )
+          }
+          </tbody>
+        </table>
+        </div>
         {
             activeTab === "results" && courts && (
+              
               Object.keys(courts).map(courtNum => (
                 <div key={courtNum} className="m-5">
                   <h3 className="my-3 pt-3 text-info ">Teren {parseInt(courtNum)+1}</h3>

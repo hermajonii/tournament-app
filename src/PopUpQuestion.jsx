@@ -49,7 +49,7 @@ export default function App() {
               <h5 className="fs-4 mb-5 mt-4">
                 Da li ste baš baš baaaaaaaaš sigurni da danas igrate???
               </h5> 
-              <div class='row justify-content-center align-items-cente'>
+              <div className='row justify-content-center align-items-cente'>
                 <button
                   className="btn btn-outline-success p-4 col-5 me-4"
                   type="button"
