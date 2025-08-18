@@ -80,7 +80,7 @@ export default function App() {
                     {Array.from({ length: 3 }).map((_, i) => (
                         <tr key={i}>
                             <td className="col-1 bg-dark text-light text-center pb-1 align-middle"> {i+1}.</td>
-                            <td className="bg-dark text-light text-center pb-1 align-middle">{team.members[i] || " "}</td>
+                            <td className="bg-dark text-light text-center pb-1 align-middle">{team.members[i]?.name || " "}</td>
                         </tr>
                     ))}
                     </tbody>

@@ -5,7 +5,11 @@ export default function UserForm() {
   const [firstName, setFirstName] = useState(undefined);
   const [lastName, setLastName] = useState(undefined);
   const [message, setMessage] = useState("");
-  
+  const [selected, setSelected] = useState("");
+
+  const handleChange = (e) => {
+    setSelected(e.target.value);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -17,7 +21,7 @@ export default function UserForm() {
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({firstName:firstName, lastName:lastName})
+          body: JSON.stringify({firstName:firstName, lastName:lastName, gender: selected})
         });
         const result = await response.json();
         if(result.error)
@@ -68,6 +72,38 @@ export default function UserForm() {
             onChange={(e) => setLastName(e.target.value)}
             required/>
           <label htmlFor="lastName"  className="text-success">Prezime</label>
+        </div>
+        <h4 className="mb-3">Pol: </h4>
+
+        <div className="form-check">
+          <input
+            className="form-check-input"
+            type="radio"
+            name="exampleRadios"
+            id="radio1"
+            value="f"
+            checked={selected === "f"}
+            onChange={handleChange}
+          />
+          <label className="form-check-label" htmlFor="radio1">
+            Ženski
+          </label>
+        </div>
+
+        <div className="form-check">
+          <input
+            className="form-check-input"
+            type="radio"
+            name="exampleRadios"
+            id="radio2"
+            value="m"
+            checked={selected === "m"}
+            onChange={handleChange}
+            required   
+          />
+          <label className="form-check-label" htmlFor="radio2">
+            Muški
+          </label>
         </div>
         <p className="text-danger">{message}</p>
         <button type="submit" className="mt-3 btn btn-success w-100 text-dark fw-bold">
