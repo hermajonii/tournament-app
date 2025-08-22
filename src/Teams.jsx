@@ -90,29 +90,27 @@ export default function App() {
                 </div>
             ))
         )}
+       {activeTab === "results" && wins && (
         <div className="m-5 p-3">
-        <h3 className="text-info">Broj pobeda: </h3>
-        <table className="table table-bordered table-stripped">
-          <thead>
-            <tr>
+          <h3 className="text-info">Broj pobeda: </h3>
+          <table className="table table-bordered table-stripped">
+            <thead>
+              <tr>
                 <td className="col-6 bg-dark text-light text-center pb-1 align-middle"> Tim</td>
                 <td className="bg-dark text-light text-center pb-1 align-middle">Pobede</td>
-            </tr>   
-          </thead>
-          <tbody>
-          {
-            activeTab === "results" && wins && (
-              wins.map(team => (
-                  <tr key={team.team}>
-                      <td className="col-6 bg-dark text-light text-center pb-1 align-middle"> Tim {team.team} </td>
-                      <td className="bg-dark text-light text-center pb-1 align-middle">{team.wins}</td>
-                  </tr>           
-              ))
-            )
-          }
-          </tbody>
-        </table>
+              </tr>   
+            </thead>
+            <tbody>
+              {wins.map(team => (
+                <tr key={team.team}>
+                  <td className="col-6 bg-dark text-light text-center pb-1 align-middle"> Tim {team.team} </td>
+                  <td className="bg-dark text-light text-center pb-1 align-middle">{team.wins}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
+      )}
         {
             activeTab === "results" && courts && (
               
