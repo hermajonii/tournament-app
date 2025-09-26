@@ -79,7 +79,7 @@ export default function App() {
                 <h5 className="text-info">Tim {team.team} - članovi</h5>
                 <table className="table table-bordered table-stripped">
                     <tbody>
-                    {Array.from({ length: 3 }).map((_, i) => (
+                    {Array.from({ length: 4 }).map((_, i) => (
                         <tr key={i}>
                             <td className="col-1 bg-dark text-light text-center pb-1 align-middle"> {i+1}.</td>
                             <td className="bg-dark text-light text-center pb-1 align-middle">{team.members[i]?.name || " "}</td>
