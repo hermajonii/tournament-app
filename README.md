@@ -1,4 +1,4 @@
-# Beach volleyball tournament app
+# Beach volleyball tournament app - user
 
 A web application for managing tournaments — registering teams, entering match results, and displaying the standings. 
 
