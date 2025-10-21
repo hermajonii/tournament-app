@@ -1,10 +1,12 @@
 import { useRef,useEffect,useState } from "react";
 import UserForm from './UserForm';
 import bambi from './assets/bambi.jpeg'
+import { useTranslation } from 'react-i18next';
 export default function App() {
   const modalRef = useRef(null);
   const modal2Ref = useRef(null);
   const modal3Ref = useRef(null);
+  const { t } = useTranslation();
   const openModal = () => {
     const modal = new window.bootstrap.Modal(modalRef.current);
     modal.show();
@@ -31,8 +33,8 @@ export default function App() {
 
   return (
     <div className='container'>
-      <button className='btn border-0 text-light btn-lg text-decoration-underline' onClick={openModal}>
-        Dodeli mi tim
+      <button className='btn border-0 text-light btn-lg text-decoration-underline m-0 p-0' onClick={openModal}>
+        {t('assignTeam')}
       </button>
 
       {/* Modal 1 */}
@@ -45,10 +47,8 @@ export default function App() {
         <div className="modal-dialog modal-fullscreen bg-dark">
           <div className="modal-content text-light bg-dark">
             <div className="modal-body d-flex flex-column justify-content-center align-items-center text-center">
-              <h3 className="mb-4 text-info">Dodela tima je samo za one koji igraju danas, budi fer!!!</h3>
-              <h5 className="fs-4 mb-5 mt-4">
-                Da li ste baš baš baaaaaaaaš sigurni da danas igrate???
-              </h5> 
+              <h3 className="mb-4 text-info">{t('showMessage1')}</h3>
+              <h5 className="fs-4 mb-5 mt-4">{t('showMessage2')}</h5> 
               <div className='row justify-content-center align-items-cente'>
                 <button
                   className="btn btn-outline-success p-4 col-5 me-4"
@@ -56,14 +56,14 @@ export default function App() {
                   data-bs-dismiss="modal"
                   onClick={handleYesClick}
                 >
-                  Da, sigurno igram danas :)
+                  {t('messageResponseYes')}
                 </button>
                 <button
                   className="btn btn-outline-danger p-4 col-5 "
                   data-bs-dismiss="modal"
                   onClick={handleNoClick}
                 >
-                  Ne igram danas :(
+                  {t('messageResponseNo')}
                 </button>
               </div>
             </div>
@@ -83,7 +83,7 @@ export default function App() {
           <div className="modal-content text-light bg-success">
             
             <div className="modal-body d-flex flex-column justify-content-center align-items-center text-center">
-              <h2 className="mb-4">Srećno danas! 🏆</h2>
+              <h2 className="mb-4">{t('goodLuckMessage')}</h2>
               <UserForm/>
               
             </div>
@@ -108,7 +108,7 @@ export default function App() {
               ></button>
             </div>
             <div className="modal-body border-0 d-flex flex-column justify-content-center align-items-center text-center">
-              <h2 className="my-3">Bravo za poštenje! Izvoli:
+              <h2 className="my-3">{t('photoMessage')}
               </h2>
               <div>
                 <img src={bambi} alt="Bambi"  className="img-thumbnail col-12 col-md-4 animate__animated animate__tada  "/>

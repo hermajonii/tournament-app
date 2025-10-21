@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from 'react-i18next';
 export default function UserForm() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState(undefined);
   const [lastName, setLastName] = useState(undefined);
@@ -25,14 +27,14 @@ export default function UserForm() {
         });
         const result = await response.json();
         if(result.error)
-          setMessage(result.error)
+          setMessage(t('errorMenPlace'))
 
         if(response.status===200){
           setFirstName("");
 
           setLastName("");
           
-          localStorage.setItem("teamMessage", result.message);    
+          localStorage.setItem("teamMessage", message);    
           
           fetch("https://tournament-backend-app.onrender.com/session-id")
           .then(res => res.json())
@@ -60,20 +62,20 @@ export default function UserForm() {
         className="p-5 text-light"
         style={{ minWidth: "300px" }}
       >
-        <h2 className="mb-4 text-center">Prijava igrača</h2>
+        <h2 className="mb-4 text-center">{t('assignMessage')}</h2>
         <div className="form-floating mb-3">
           <input className="form-control" id="firstName" placeholder="name@example.com" value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required/>
-          <label htmlFor="firstName"  className="text-success">Ime</label>
+          <label htmlFor="firstName"  className="text-success">{t('name')}</label>
         </div>
         <div className="form-floating mb-3">
           <input className="form-control" id="lastName" placeholder="name@example.com" value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required/>
-          <label htmlFor="lastName"  className="text-success">Prezime</label>
+          <label htmlFor="lastName"  className="text-success">{t('surname')}</label>
         </div>
-        <h4 className="mb-3">Pol: </h4>
+        <h4 className="mb-3">{t('gender')}: </h4>
 
         <div className="form-check">
           <input
@@ -86,7 +88,7 @@ export default function UserForm() {
             onChange={handleChange}
           />
           <label className="form-check-label" htmlFor="radio1">
-            Ženski
+          {t('female')}
           </label>
         </div>
 
@@ -102,15 +104,15 @@ export default function UserForm() {
             required   
           />
           <label className="form-check-label" htmlFor="radio2">
-            Muški
+          {t('male')}
           </label>
         </div>
         <p className="text-danger">{message}</p>
         <button type="submit" className="mt-3 btn btn-success w-100 text-dark fw-bold">
-          Ubaci me u nasumičnu grupu
+        {t('goForward')}
         </button>
         <button className="btn btn-danger mt-3 w-100" type="button" data-bs-dismiss="modal">
-          &lt;&lt; Vrati se nazad na raspored
+          &lt;&lt; {t('goBack')}
         </button>
       </form>
     </div>
