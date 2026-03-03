@@ -14,24 +14,16 @@ export default function App() {
     return (
         <div className="full-page">       
             <LanguageSelector /> 
-            <nav className="navbar navbar-expand navbar-dark bg-dark p-0 m-0 px-1 pt-1">
-            
-                <a className="navbar-brand d-flex align-items-center m-0 p-0" href="">
-                <img
-                    src={ball}
-                    alt="Logo"
-                    width="140"
-                    height="140"
-                    className="m-0 p-0"
-                    />
-                </a>
-                
-                <ul className={`navbar-nav ms-auto p-0  ${isButtonDisabled===true ? "d-none" : ""}`}>
-                    <li className={`nav-item ${isButtonDisabled===true ? "d-none" : ""}" `}>
-                        <PopupQuestion/>
-                    </li>
-                </ul>
-                
+            <nav className="navbar navbar-expand shadow-sm py-2 px-4 bg-black"  >
+              <a className="navbar-brand d-flex align-items-center m-0 p-0" href="">
+                <img src={ball} alt="Logo" width="120" height="120" />
+              </a>
+              
+              <ul className={`navbar-nav ms-auto p-0 ${isButtonDisabled ? "d-none" : ""}`}>
+                <li className="nav-item">
+                  <PopupQuestion />
+                </li>
+              </ul>
             </nav>
            
         </div>

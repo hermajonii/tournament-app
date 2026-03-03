@@ -7,37 +7,17 @@ export default function App() {
   const modal2Ref = useRef(null);
   const modal3Ref = useRef(null);
   const { t } = useTranslation();
-  const openModal = () => {
-    const modal = new window.bootstrap.Modal(modalRef.current);
-    modal.show();
-  };
   const openModal2 = () => {
     const modal2 = new window.bootstrap.Modal(modal2Ref.current);
     modal2.show();
   };
-  const openModal3 = () => {
-    const modal3 = new window.bootstrap.Modal(modal3Ref.current);
-    modal3.show();
-  };
-  const handleNoClick = () => {
-    const modal = window.bootstrap.Modal.getInstance(modalRef.current);
-    modal.hide();
-    openModal3();
-  };
-
-  const handleYesClick = () => {
-    const modal = window.bootstrap.Modal.getInstance(modalRef.current);
-    modal.hide();
-    openModal2();
-  };
-
   return (
     <div className='container'>
-      <button className='btn border-0 text-light btn-lg text-decoration-underline m-0 p-0' onClick={openModal}>
+      <button className='assign-btn' onClick={openModal2}>
         {t('assignTeam')}
       </button>
 
-      {/* Modal 1 */}
+      {/* Modal 1
       <div
         className="modal fade"
         tabIndex="-1"
@@ -69,7 +49,7 @@ export default function App() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Modal 2 */}
       <div
@@ -79,19 +59,17 @@ export default function App() {
         aria-hidden="true"
       >
        
-        <div className="modal-dialog modal-fullscreen bg-success">
-          <div className="modal-content text-light bg-success">
+        <div className="modal-dialog modal-fullscreen bg-evergreen">
+          <div className="modal-content text-light bg-evergreen">
             
             <div className="modal-body d-flex flex-column justify-content-center align-items-center text-center">
-              <h2 className="mb-4">{t('goodLuckMessage')}</h2>
               <UserForm/>
-              
             </div>
           </div>
         </div>
       </div>
 
-      {/* Modal 3 */}
+      {/* Modal 3
       <div
         className="modal fade"
         tabIndex="-1"
@@ -116,7 +94,7 @@ export default function App() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
     </div>
   );

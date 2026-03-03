@@ -22,11 +22,11 @@ export default function LanguageSelector() {
     };
   
     return (
-    <div className='row bg-dark d-flex align-items-end m-0'>
+    <div className='row d-flex align-items-end m-0 bg-black' >
         <div className="col d-flex justify-content-end p-1">
             <div className="dropdown">
                 <button
-                className="btn btn-dark  dropdown-toggle d-flex align-items-center"
+                className="btn bg-black text-light  dropdown-toggle d-flex align-items-center"
                 type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
@@ -34,11 +34,11 @@ export default function LanguageSelector() {
                 <img src={selected.flag} alt={selected.label} style={{ width: 20, height: 20, marginRight: 8 }} />
                 {selected.label}
                 </button>
-                <ul className="dropdown-menu bg-dark text-light">
+                <ul className="dropdown-menu bg-black text-light">
                 {languages.map(lang => (
                     <li key={lang.code}>
                     <button
-                        className="dropdown-item d-flex align-items-center bg-dark text-light"
+                        className="dropdown-item d-flex align-items-center bg-black text-light"
                         onClick={() => handleSelect(lang)}
                     >
                         <img src={lang.flag} alt={lang.label} style={{ width: 20, height: 20, marginRight: 8 }} />

@@ -1,5 +1,6 @@
 import { useEffect,useState } from "react";
 import { useTranslation } from 'react-i18next';
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 export default function App() {
     const [teams, setTeams] = useState([]);
     const [courts, setCourts] = useState([]);
@@ -11,7 +12,7 @@ export default function App() {
     useEffect(() => {
       const fetchResults = async () => {
         try {
-          const res = await fetch("https://tournament-backend-app.onrender.com/results");
+          const res = await fetch(`${SERVER_URL}/results`);
           const data = await res.json();
           setCourts(data.results);
           setWins(data.wins);
@@ -22,7 +23,7 @@ export default function App() {
       };
       fetchResults()
       
-      fetch("https://tournament-backend-app.onrender.com/session-id")
+      fetch(`${SERVER_URL}/session-id`)
       .then(res => res.json())
       .then(data => {
         const savedSessionId = localStorage.getItem("serverSessionId");
@@ -37,7 +38,7 @@ export default function App() {
       });
         
         
-      fetch("https://tournament-backend-app.onrender.com/teams")
+      fetch(`${SERVER_URL}/teams`)
       .then(res => res.json())
       .then(data => {
           setTeams(data.teams);
@@ -54,20 +55,20 @@ export default function App() {
         return () => clearInterval(intervalId);
     }, []);
   return (
-     <div className="bg-dark text-light pb-2">
-        <h3 className="bg-dark p-3">{message}</h3>
-        <ul className="nav nav-tabs text-info">
-            <li className="nav-item  text-info">
+     <div className="bg-black pb-2" >
+        <h3 className="p-3">{message}</h3>
+        <ul className="nav nav-tabs rounded border-evergreen">
+            <li className="nav-item bg-black border-evergreen">
             <button
-                className={`nav-link text-info ${activeTab === "teams" ? "active  bg-info text-dark" : ""}`}
+                className={`nav-link ${activeTab === "teams" ? "active bg-evergreen text-light border-evergreen" : "text-evergreen  bg-black border-evergreen border-bottom"}`}
                 onClick={() => setActiveTab("teams")}
             >
                 {t('showTeam')}
             </button>
             </li>
-            <li className="nav-item  text-info">
+            <li className="nav-item text-light bg-evergreen rounded-end">
             <button
-                className={`nav-link text-info ${activeTab === "results" ? "active bg-info text-dark" : ""}`}
+                className={`nav-link  ${activeTab === "results" ? "active bg-evergreen text-light border-evergreen" : "text-evergreen  bg-black border-evergreen border-bottom"}`}
                 onClick={() => {setActiveTab("results");}}
             >
                 {t('showResults')}
@@ -78,36 +79,43 @@ export default function App() {
 
         {activeTab === "teams" && (
             teams.map(team => (
-                <div key={team.team} className="m-5 p-3">
-                <h5 className="text-info">{t('team')} {team.team} - {t('members')}</h5>
-                <table className="table table-bordered table-stripped">
-                    <tbody>
-                    {Array.from({ length: numOfPlayers }).map((_, i) => (
-                        <tr key={i}>
-                            <td className="col-1 bg-dark text-light text-center pb-1 align-middle"> {i+1}.</td>
-                            <td className="bg-dark text-light text-center pb-1 align-middle">{team.members[i]?.name || " "}</td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
+                <div key={team.team} className="m-2 p-3">
+                  <h5 className="pt-3 bg-gradient text-light rounded-top p-2 m-0 border-dark">{t('team')} {team.team} - {t('members')}</h5>
+                  <table className="table table-bordered border-0">
+                      <tbody>
+                      {Array.from({ length: numOfPlayers }).map((_, i) => (
+                          <tr key={i}>
+                              <td className="col-1 bg-black text-light text-center pb-1 align-middle border-dark form-subtitle"> {i+1}.</td>
+                              <td className="bg-black text-light text-center pb-1 align-middle border-dark form-subtitle">{team.members[i]?.name || " "}</td>
+                          </tr>
+                      ))}
+                      </tbody>
+                  </table>
+                  <div className="form-divider mt-5">
+                    <div className="form-divider-line" />
+                    <div className="form-divider-dot" />
+                    <div className="form-divider-line" />
+                  </div>
                 </div>
+                
             ))
+            
         )}
        {activeTab === "results" && wins && (
-        <div className="m-5 p-3">
-          <h3 className="text-info">{t('numOfWins')}: </h3>
-          <table className="table table-bordered table-stripped">
+        <div className="m-5 mb-0 p-3">
+          <h3 className="pt-3 bg-gradient text-light rounded-top p-2 m-0 border-dark">{t('numOfWins')}: </h3>
+          <table className="table table-bordered table-stripped border-0">
             <thead>
               <tr>
-                <td className="col-6 bg-dark text-light text-center pb-1 align-middle"> {t('team')}</td>
-                <td className="bg-dark text-light text-center pb-1 align-middle">{t('wins')}</td>
+                <td className="col-6 bg-black text-orange text-center pb-1 align-middle border-dark form-subtitle"> {t('team')}</td>
+                <td className="bg-black text-orange text-center pb-1 align-middle border-dark form-subtitle">{t('wins')}</td>
               </tr>   
             </thead>
             <tbody>
               {wins.map(team => (
                 <tr key={team.team}>
-                  <td className="col-6 bg-dark text-light text-center pb-1 align-middle"> {t('team')} {team.team} </td>
-                  <td className="bg-dark text-light text-center pb-1 align-middle">{team.wins}</td>
+                  <td className="col-6 bg-black text-light text-center pb-1 align-middle border-dark"> {t('team')} {team.team} </td>
+                  <td className="bg-black text-light text-center pb-1 align-middle border-dark">{team.wins}</td>
                 </tr>
               ))}
             </tbody>
@@ -118,24 +126,30 @@ export default function App() {
             activeTab === "results" && courts && (
               
               Object.keys(courts).map(courtNum => (
-                <div key={courtNum} className="m-5">
-                  <h3 className="my-3 pt-3 text-info ">{t('field')} {parseInt(courtNum)+1}</h3>
-                  <table className="table table-bordered text-center table-striped">
+                <div key={courtNum} className="mx-5 mb-5 p-3">
+                  <div className="form-divider mb-5">
+                    <div className="form-divider-line" />
+                    <div className="form-divider-dot" />
+                    <div className="form-divider-line" />
+                  </div>
+                  <h3 className="pt-3 bg-gradient text-light rounded-top p-2 m-0 border-dark">{t('field')} {parseInt(courtNum)+1}</h3>
+                  <table className="table table-bordered text-center table-striped mt-0 border-0">
                     <thead>
                       <tr>
-                        <th className="bg-dark text-light">{t('game')}</th>
-                        <th className="bg-dark text-light">{t('score')}</th>
+                        <th className="bg-black text-orange col-6 border-dark form-subtitle">{t('game')}</th>
+                        <th className="bg-black text-orange col-6 border-dark form-subtitle">{t('score')}</th>
                       </tr>
                     </thead>
                     <tbody>
                       {courts[courtNum].map((g, idx) => (
                         <tr key={idx}>
-                          <td className="bg-dark text-light">{g.game}</td>
-                          <td className="bg-dark text-light">{g.result || "–"}</td>
+                          <td className="bg-black text-light border-dark">{g.game}</td>
+                          <td className="bg-black text-light border-dark">{g.result || "–"}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
+                  
                 </div>
               ))
             )

@@ -3,4 +3,36 @@
   padding: 0rem;
   text-align: center;
 }
-
+.bg-black {
+  background-color: #040403;
+}
+.bg-blue {
+  background-color:#1E91D6  !important;
+}
+.bg-orange {
+  background-color:#E18335  !important;
+}
+.bg-red {
+  background-color: #8F250C  !important;
+}
+.bg-evergreen {
+  background-color: #00241B !important;
+}
+.border-evergreen {
+  border-color:  #00241B !important;;
+}
+.text-black{
+  color: #040403  !important;
+}
+.text-blue{
+  color:#1E91D6  !important;
+}
+.text-orange{
+  color:#E18335  !important;
+}
+.text-red{
+  color: #8F250C !important;
+}
+.text-evergreen{
+  color: #00241B !important;
+}
