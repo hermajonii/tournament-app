@@ -58,8 +58,8 @@ export default function App() {
   return (
      <div className="bg-black pb-2" >
         <MessageBanner message={message} />
-        <ul className="nav nav-tabs rounded border-evergreen">
-            <li className="nav-item bg-black border-evergreen">
+        <ul className="nav nav-tabs border-evergreen">
+            <li className="nav-item bg-evergreen border-black rounded-start">
             <button
                 className={`nav-link ${activeTab === "teams" ? "active bg-evergreen text-light border-evergreen" : "text-evergreen  bg-black border-evergreen border-bottom"}`}
                 onClick={() => setActiveTab("teams")}
