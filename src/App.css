@@ -6,9 +6,6 @@
 .bg-black {
   background-color: rgb(4, 4, 3);
 }
-.bg-blue {
-  background-color:#1E91D6  !important;
-}
 .bg-orange {
   background-color:#E18335  !important;
 }
@@ -23,9 +20,6 @@
 }
 .text-black{
   color: #040403  !important;
-}
-.text-blue{
-  color:#1E91D6  !important;
 }
 .text-orange{
   color:#E18335  !important;
