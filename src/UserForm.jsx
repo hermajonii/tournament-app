@@ -56,7 +56,7 @@ export default function UserForm() {
         .then(res => res.json())
         .then(data => {
           localStorage.setItem("serverSessionId",  data.sessionId);
-          window.location.href = "/";
+          window.location.href = "/tournament-app/";
         })        
       }
       
