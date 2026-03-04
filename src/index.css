@@ -10,7 +10,7 @@ body{
   letter-spacing: 0.08em;
   }
 table {
-  font-family: "Jost", system-ui;
+  font-family: "Jost", sans-serif;
   font-size: 0.95rem;
   font-weight: 300;
   font-style: normal;

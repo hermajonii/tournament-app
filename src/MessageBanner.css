@@ -1,0 +1,23 @@
+.message-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1.2rem 2rem 0.8rem;
+}
+
+.message-banner-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(225,131,53,0.35), transparent);
+}
+
+.message-banner-text {
+  font-family: 'Limelight', cursive;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: #E18335;
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(225,131,53,0.3);
+  white-space: nowrap;
+}

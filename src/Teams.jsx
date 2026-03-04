@@ -1,5 +1,6 @@
 import { useEffect,useState } from "react";
 import { useTranslation } from 'react-i18next';
+import MessageBanner from "./MessageBanner";
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 export default function App() {
     const [teams, setTeams] = useState([]);
@@ -56,7 +57,7 @@ export default function App() {
     }, []);
   return (
      <div className="bg-black pb-2" >
-        <h3 className="p-3">{message}</h3>
+        <MessageBanner message={message} />
         <ul className="nav nav-tabs rounded border-evergreen">
             <li className="nav-item bg-black border-evergreen">
             <button
@@ -79,14 +80,20 @@ export default function App() {
 
         {activeTab === "teams" && (
             teams.map(team => (
-                <div key={team.team} className="m-2 p-3">
+                <div key={team.team} className="my-5 px-3 mx-3">
                   <h5 className="pt-3 bg-gradient text-light rounded-top p-2 m-0 border-dark">{t('team')} {team.team} - {t('members')}</h5>
                   <table className="table table-bordered border-0">
+                    <thead>
+                      <tr>
+                        <td className=" bg-black text-orange text-center pb-1 align-middle border-dark form-subtitle"> {t('number')}</td>
+                        <td className="bg-black text-orange text-center pb-1 align-middle border-dark form-subtitle">{t('fullname')}</td>
+                      </tr>   
+                    </thead>
                       <tbody>
                       {Array.from({ length: numOfPlayers }).map((_, i) => (
                           <tr key={i}>
-                              <td className="col-1 bg-black text-light text-center pb-1 align-middle border-dark form-subtitle"> {i+1}.</td>
-                              <td className="bg-black text-light text-center pb-1 align-middle border-dark form-subtitle">{team.members[i]?.name || " "}</td>
+                              <td className="col-1 bg-black text-light text-center pb-1 align-middle border-dark"> {i+1}.</td>
+                              <td className="bg-black text-light text-center pb-1 align-middle border-dark">{team.members[i]?.name || " "}</td>
                           </tr>
                       ))}
                       </tbody>

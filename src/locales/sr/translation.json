@@ -12,11 +12,16 @@
     "score":"Rezultat",
     "showMessage1":"Dodela tima je samo za one koji igraju danas, budi fer!!!",
     "showMessage2":"Da li ste baš baš baaaaaaaaš sigurni da danas igrate???",
+    "messageGender":"Odaberite pol",
+    "messageNoData":"Unesite sve podatke",
     "messageResponseYes":"Da, sigurno igram danas :)",
     "messageResponseNo":"Ne igram danas :(",
     "photoMessage":"Bravo za poštenje! Izvoli:",
     "goodLuckMessage":"Srećno danas! 🏆", 
     "assignMessage":"Prijava igrača",
+    "messageWrongKey":"Pogrešna šifra",    
+    "messageNoCode":"Unesite tajnu šifru",
+    "errorMenPlace": "Nema dostupnih timova za muškarca. Dame biraju!",
     "name":"Ime",
     "surname":"Prezime",
     "gender":"Pol",
@@ -24,5 +29,7 @@
     "male":"Muški",
     "goForward":"Dodeli tim",
     "goBack": "Vrati se nazad na raspored",
-    "errorMenPlace": "Nema dostupnih timova za muškarca. Dame biraju!"
+    "number":"#",
+    "fullname":"Ime i prezime",
+    "secretCode":"Tajna šifra"
 }
