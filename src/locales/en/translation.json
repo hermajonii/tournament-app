@@ -7,7 +7,7 @@
     "team":"Team",
     "members":"members",
     "wins":"Wins",
-    "field":"Field",
+    "field":"Court",
     "game":"Game",
     "score":"Score",
     "showMessage1": "Team assignment is only for those playing today, be fair!!!",
@@ -22,7 +22,7 @@
     "gender":"Gender",
     "female":"Female",
     "male":"Male",
-    "goForward":"Assign me to a random team",
+    "goForward":"Assign me",
     "goBack": " Go back to schedule",
     "errorMenPlace": "No available team for a man. Ladies first!"
 }

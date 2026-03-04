@@ -22,7 +22,7 @@
     "gender":"Pol",
     "female":"Ženski",
     "male":"Muški",
-    "goForward":"Ubaci me u nasumičnu grupu",
+    "goForward":"Dodeli tim",
     "goBack": "Vrati se nazad na raspored",
     "errorMenPlace": "Nema dostupnih timova za muškarca. Dame biraju!"
 }
