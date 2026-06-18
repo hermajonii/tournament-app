@@ -91,7 +91,7 @@ export default function App() {
             className={`nav-link ${
               activeTab === "teams"
                 ? "active bg-evergreen text-light border-evergreen"
-                : "text-evergreen  bg-black border-evergreen border-bottom"
+                : "text-orange  bg-black border-evergreen border-bottom"
             }`}
             onClick={() => setActiveTab("teams")}
           >
@@ -103,7 +103,7 @@ export default function App() {
             className={`nav-link  ${
               activeTab === "results"
                 ? "active bg-evergreen text-light border-evergreen"
-                : "text-evergreen  bg-black border-evergreen border-bottom"
+                : "text-orange  bg-black border-evergreen border-bottom"
             }`}
             onClick={() => {
               setActiveTab("results");
@@ -118,7 +118,7 @@ export default function App() {
               className={`nav-link  ${
                 activeTab === "players"
                   ? "active bg-evergreen text-light border-evergreen"
-                  : "text-evergreen  bg-black border-evergreen border-bottom"
+                  : "text-orange  bg-black border-evergreen border-bottom"
               }`}
               onClick={() => {
                 setActiveTab("players");
