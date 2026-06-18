@@ -33,7 +33,7 @@ export default function App() {
   };
   const fetchPlayers = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/players`);
+      const res = await fetch(`https://tournament-backend-app.onrender.com/players`);
       const data = await res.json();
       setPlayers(data);
     } catch (err) {
