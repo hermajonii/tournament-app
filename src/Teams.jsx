@@ -100,7 +100,7 @@ export default function App() {
         </li>
         <li className="nav-item text-light bg-evergreen rounded-end">
           <button
-            className={`nav-link  ${
+            className={`nav-link rounded-0  ${
               activeTab === "results"
                 ? "active bg-evergreen text-light border-evergreen"
                 : "text-white  bg-black border-evergreen border-bottom"
