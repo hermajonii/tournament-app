@@ -31,6 +31,6 @@
     "goBack": " Go back to schedule",
     "number":"#",
     "fullname":"Full name",    
-    "secretCode":"Secret code"
-
+    "secretCode":"Secret code",
+    "showVictories":"Victories"
 }

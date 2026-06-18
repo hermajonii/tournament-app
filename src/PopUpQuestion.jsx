@@ -1,7 +1,7 @@
-import { useRef,useEffect,useState } from "react";
-import UserForm from './UserForm';
-import bambi from './assets/bambi.jpeg'
-import { useTranslation } from 'react-i18next';
+import { useRef, useEffect, useState } from "react";
+import UserForm from "./UserForm";
+import bambi from "./assets/bambi.jpeg";
+import { useTranslation } from "react-i18next";
 export default function App() {
   const modalRef = useRef(null);
   const modal2Ref = useRef(null);
@@ -12,9 +12,9 @@ export default function App() {
     modal2.show();
   };
   return (
-    <div className='container'>
-      <button className='assign-btn' onClick={openModal2}>
-        {t('assignTeam')}
+    <div className="container">
+      <button className="assign-btn" onClick={openModal2}>
+        {t("assignTeam")}
       </button>
 
       {/* Modal 1
@@ -58,12 +58,10 @@ export default function App() {
         ref={modal2Ref}
         aria-hidden="true"
       >
-       
         <div className="modal-dialog modal-fullscreen bg-evergreen">
           <div className="modal-content text-light bg-evergreen">
-            
             <div className="modal-body d-flex flex-column justify-content-center align-items-center text-center">
-              <UserForm/>
+              <UserForm />
             </div>
           </div>
         </div>
@@ -95,7 +93,6 @@ export default function App() {
           </div>
         </div>
       </div> */}
-
     </div>
   );
 }

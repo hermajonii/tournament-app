@@ -31,5 +31,6 @@
     "goBack": "Vrati se nazad na raspored",
     "number":"#",
     "fullname":"Ime i prezime",
-    "secretCode":"Tajna šifra"
+    "secretCode":"Tajna šifra",
+    "showVictories":"Pobede"
 }
